@@ -2,7 +2,11 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(require('morgan')('dev'))
+if (process.env.NODE_ENV !== 'test') {
+  app.use(require('morgan')('dev'))
+  app.use(require('knex-logger')(require('./db')))
+}
+
 app.use(require('body-parser').json())
 
 app.use((req, res, next) => {
