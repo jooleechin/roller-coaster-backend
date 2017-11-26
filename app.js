@@ -9,6 +9,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.use(require('body-parser').json())
 
+app.use('/auth', require('./routes/auth.routes'))
 app.use('/api/users', require('./routes/users.routes'))
 
 app.use((req, res, next) => {
@@ -18,6 +19,7 @@ app.use((req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
+  console.error(err)
   const status = err.status || 500
   const message = err.message || `Something went wrong!`
   res.status(status).json({ status, message })
