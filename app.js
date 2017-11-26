@@ -11,6 +11,7 @@ app.use(require('body-parser').json())
 
 app.use('/auth', require('./routes/auth.routes'))
 app.use('/api/users', require('./routes/users.routes'))
+app.use('/api/parties', require('./routes/parties.routes'))
 
 app.use((req, res, next) => {
   const status = 404
