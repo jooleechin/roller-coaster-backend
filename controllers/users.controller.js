@@ -12,6 +12,17 @@ class UsersController extends Controller {
       res.status(status).json({ status, message })
     })
   }
+
+  static signup (req, res, next) {
+    const { email, password } = req.body
+    User.signup(email, password)
+    .then(user => res.json({ user }))
+    .catch(error => {
+      const status = 400
+      const message = error.message || `Please check your email and password`
+      res.status(status).json({ status, message })
+    })
+  }
 }
 
 module.exports = UsersController

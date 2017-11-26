@@ -11,6 +11,16 @@ class User extends Model {
       }
     })
   }
+
+  static signup (email, password) {
+    return db('users').where({ email }).first().then(user => {
+      if (user) {
+        throw new Error(`Email has already been taken`)
+      } else {
+        return User.create({ email, password })
+      }
+    }).catch(() => { throw new Error() })
+  }
 }
 
 module.exports = User
