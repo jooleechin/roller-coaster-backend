@@ -9,6 +9,8 @@ if (process.env.NODE_ENV !== 'test') {
 
 app.use(require('body-parser').json())
 
+app.use('/api/users', require('./routes/users.routes'))
+
 app.use((req, res, next) => {
   const status = 404
   const message = `Could not ${req.method} ${req.url}`
