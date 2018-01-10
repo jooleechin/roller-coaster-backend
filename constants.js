@@ -1,6 +1,5 @@
 module.exports = {
   tableNames: {
-    User: 'users',
-    Party: 'parties'
+    ROLLER_COASTERS: 'roller_coasters'
   }
 }

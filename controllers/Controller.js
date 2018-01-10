@@ -2,8 +2,13 @@ const capitalize = require('lodash/capitalize')
 const pluralize = require('pluralize')
 
 module.exports = name => {
-  const singular = pluralize.singular(name)
-  const modelName = capitalize(singular)
+  const singular = name.split('_').map((e,i,a) => {
+    if(i === a.length-1) return pluralize.singular(e)
+    return e
+  })
+
+  const modelName = singular.reduce((acc, e) => acc + capitalize(e), '')
+
   const Model = require(`../models/${modelName}.model`)
 
   const errorHandler = next => {
