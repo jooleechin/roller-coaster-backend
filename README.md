@@ -6,11 +6,14 @@ This backend is paired with [roller-coaster-front-end]()
 ```
 npm install
 
+cp .env.sample .env
+
 createdb roller_coaster_dev
 
 npm run knex migrate:latest
 
 npm run knex seed:run
+
 ```
 
 ## To run
