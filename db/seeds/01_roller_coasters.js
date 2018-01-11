@@ -1,4 +1,4 @@
-const { tableNames : { ROLLER_COASTERS } } =  require('../constants')
+const { tableNames : { ROLLER_COASTERS } } =  require('../../constants')
 
 exports.seed = knex => {
   return knex(ROLLER_COASTERS).del().then(() => {

@@ -1,6 +1,7 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8000
 require('./constants')
 
 if (process.env.NODE_ENV !== 'test') {
@@ -8,6 +9,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(require('knex-logger')(require('./db')))
 }
 
+app.use(cors())
 app.use(require('body-parser').json())
 
 app.use('/api/rollercoasters', require('./routes/roller_coasters.routes'))

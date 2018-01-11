@@ -1,7 +1,7 @@
-const { tableNames : { ROLLER_COASTERS } } =  require('../constants')
+const { tableNames : { ROLLER_COASTERS } } =  require('../../constants')
 
 exports.up = knex => {
-  return knex.schema.createTable('ROLLER_COASTERS', table => {
+  return knex.schema.createTable(ROLLER_COASTERS, table => {
     table.increments()
     table.string('name').notNullable()
     table.text('park').notNullable()
@@ -12,5 +12,5 @@ exports.up = knex => {
 }
 
 exports.down = knex => {
-  return knex.schema.dropTable('roller_coasters')
+  return knex.schema.dropTable(ROLLER_COASTERS)
 }
