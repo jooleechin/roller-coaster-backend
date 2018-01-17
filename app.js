@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 8000
 require('./constants')
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV === 'development') {
   app.use(require('morgan')('dev'))
   app.use(require('knex-logger')(require('./db')))
 }
